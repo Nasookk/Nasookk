@@ -1,3 +1,18 @@
+# Hi there, I'm Nasookk 👋
+
+Welcome to my GitHub profile!
+
+I am a passionate software engineer, working primarily with:
+- Python
+- JavaScript (React & Node.js)
+- Web Development
+- Data Science & AI
+
+### Connect with me:
+- [LinkedIn](https://www.linkedin.com/in/nasookk/)
+- [Twitter](https://twitter.com/nasookk)
+
+Let's collaborate on open-source projects or chat about technology! 🚀
 <header>
 
 <!--
