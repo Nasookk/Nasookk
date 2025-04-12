@@ -1,0 +1,1714 @@
+@charset "UTF-8";
+:root {
+  --primary: #3f78e0;
+  --secondary: #60697b;
+  --success: #45c4a0;
+  --purple: #747ed1;
+  --green: #45c4a0;
+  --orange: #fab758;
+  --gray: #f9f9f9;
+  --dark: #343f52;
+  --light-gray: #f6f7f9;
+  --dark-footer: #1e2228;
+  --body-font: 'Manrope', sans-serif;
+  --heading-font: 'Manrope', sans-serif;
+  --transition: all 0.2s ease-in-out;
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+}
+
+.content-wrapper{
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  font-size: 1rem;
+  background-color: #f7f8fa;
+  color: #1b1e23;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.social-icons a {
+  font-size: 1.2rem;
+  color: #2e3a51; 
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #405cf5;
+}
+.social-icons i {
+  display: inline-block !important;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: #2e3a51;
+}
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -15px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+
+.col-12, .col-lg-6, .col-md-4, .col-lg-8, .col-xl-8, .col-xxl-7, .col-lg-4 {
+  padding-left: 15px;
+  padding-right: 15px;
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+.col-lg-6 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.col-md-4 {
+  flex: 0 0 auto;
+  width: 33.3333%;
+}
+
+.col-lg-4 {
+  flex: 0 0 auto;
+  width: 33.3333%;
+  margin-top: -200px;
+}
+
+.col-lg-8 {
+  flex: 0 0 auto;
+  width: 66.6666%;
+  margin-top: -200px;
+}
+
+.col-xl-8 {
+  flex: 0 0 auto;
+  width: 66.6666%;
+}
+
+.col-xxl-7 {
+  flex: 0 0 auto;
+  width: 58.3333%;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+.pt-12 {
+  padding-top: 1rem;
+}
+.pt-md-16 {
+  padding-top: 3rem;
+}
+.mb-3{
+  margin-bottom: 1.5rem;
+}
+.mb-4{
+  margin-bottom: 1.5rem;
+}
+.mb-5 {
+  margin-bottom: 4rem;
+}
+.mb-7 {
+  margin-bottom: 3rem;
+}
+.mb-9 {
+  margin-bottom: 0rem;
+}
+
+.col-lg-8.col-xxl-7.mx-auto.text-center {
+  margin-top: 20px; /* Та өөрөө 20px, 60px гэх мэт туршиж болно */
+}
+
+
+/* Зургаа хуудсын доторх container-ийн өргөнтэй ижил байхаар тохируулж байна */
+figure.position-absoute {
+  position:absolute ;
+  bottom: 0;
+  left: 0;
+  height: auto;
+  transform: translateY(+100%);
+  z-index: 1;
+  bottom: -40px; /* Энэ утгаар босоо байрлалыг тохируулна */
+  width: 100%;
+  max-width: 1200px; /* container-ийн max-width-тэй адилхан болго */
+  margin: 0 auto;    /* төвд байрлуулна */
+  right: 0;
+}
+
+/* Зураг таслагдахгүй, зөв багтах */
+figure.position-absoute img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: background;
+}
+
+/* === Services Section - 3 багана нэг мөрөнд харагдуулах === */
+.row.gx-md-8.gx-xl-12.gy-8.mb-14.mb-md-16.text-center {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: nowrap; /* нэг мөрөнд шахаж байрлуулна */
+  gap: 40px; /* багануудын хоорондын зай */
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+/* 3 баганын өргөнийг тогтмол байлгах */
+.row.gx-md-8.gx-xl-12.gy-8.mb-14.mb-md-16.text-center > .col-md-4 {
+  flex: 0 0 30%;
+  max-width: 30%;
+}
+
+/* Икон кнопнуудын стилийн сайжруулалт */
+.icon.btn.btn-block {
+  width: 70px;
+  height: 70px;
+  border-radius: 15%;
+  margin: 0 auto 20px auto;
+  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Иконы өнгөний төрлүүд */
+.btn-soft-purple {
+  background-color: rgba(116, 126, 209, 0.15);
+  color: #745ed1;
+}
+
+.btn-soft-green {
+  background-color: rgba(69, 196, 160, 0.15);
+  color: #45c4a0;
+}
+
+.btn-soft-orange {
+  background-color: rgba(250, 183, 88, 0.15);
+  color: #fbb758;
+}
+
+/* Responsive — дэлгэц жижиг бол 3 багана бутарч 2 эсвэл 1 мөрөнд орно */
+@media (max-width: 992px) {
+  .row.gx-md-8.gx-xl-12.gy-8.mb-14.mb-md-16.text-center {
+    flex-wrap: wrap;
+  }
+
+  .row.gx-md-8.gx-xl-12.gy-8.mb-14.mb-md-16.text-center > .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+}
+/* === Our Strategy Section Layout === */
+.gx-md-8.gx-xl-12.gy-10.align-items-center {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: -10px;
+  margin-bottom: 4rem;
+}
+
+
+/* Left column (text) */
+.gx-md-8.gx-xl-12.gy-10.align-items-center .col-lg-6:first-child {
+  flex: 0 0 48%;
+  max-width: 48%;
+  margin-top: -200px;
+}
+
+/* Right column (3 steps) */
+.gx-md-8.gx-xl-12.gy-10.align-items-center .col-lg-6:last-child {
+  flex: 0 0 48%;
+  max-width: 48%;
+  display: flex;
+  flex-direction: column;
+  gap: 1 rem;
+  margin-top: 2rem;
+
+}
+
+.gx-md-8.gx-xl-12.gy-10.align-items-center .d-flex.flex-row {
+  display: flex;
+  align-items: center; /* Энэ чухал — дээд талаас тааруулна */
+  gap: 1rem;
+  margin-bottom: 1rem; /* багана хоорондын босоо зай */
+}
+
+.gx-md-8.gx-xl-12.gy-10.align-items-center .d-flex.flex-row .text-start {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Гол row - хоёр баганын layout */
+.row.gx-lg-8.gx-xl-12.gy-10.gy-lg-0.mb-11.align-items-end {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Зүүн талын гарчиг бүхий хэсэг */
+.row.gx-lg-8.gx-xl-12.gy-10.gy-lg-0.mb-11.align-items-end .col-lg-4 {
+  flex: 0 0 35%;
+  max-width: 35%; 
+  margin-bottom: -600px !important
+}
+
+/* Баруун талын тоонуудын хэсэг */
+.row.gx-lg-8.gx-xl-12.gy-10.gy-lg-0.mb-11.align-items-end .col-lg-8 {
+  flex: 0 0 60%;
+  max-width: 60%;
+  margin-bottom: -600px !important
+}
+
+/* Доторх тоон блокууд */
+.counter-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+/* Тоон блок бүр */
+.counter-wrapper > .col-md-4 {
+  flex: 1;
+  text-align: center;
+}
+
+/* Responsive — жижиг дэлгэц дээр доош буух */
+@media (max-width: 991px) {
+  .row.gx-lg-8.gx-xl-12.gy-10.gy-lg-0.mb-11.align-items-end {
+    flex-direction: column;
+    align-items: flex-start;
+   
+  }
+
+  .row.gx-lg-8.gx-xl-12.gy-10.gy-lg-0.mb-11.align-items-end .col-lg-4,
+  .row.gx-lg-8.gx-xl-12.gy-10.gy-lg-0.mb-11.align-items-end .col-lg-8 {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+
+  .counter-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .counter-wrapper > .col-md-4 {
+    max-width: 100%;
+  }
+}
+/* ------------------------------
+   Testimonial Section Layout Fix
+------------------------------ */
+
+.card.bg-gray.shadow-lg .row.gx-0 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0rem !important;
+}
+
+.card .col-lg-6 {
+  padding: 0;
+}
+.card.bg-gray.shadow-lg .col-lg-6 {
+  width: 50%;
+  padding: 0;
+}
+
+/* Зураг */
+
+/* Зөвхөн Company Facts хэсгийн зураг тохиргоо */
+.card.bg-gray.shadow-lg .image-wrapper.bg-image {
+  background-image: url('./assets/img/photos/tm1.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  min-height: 400px;
+}
+
+/* Контент хэсгийн padding тохиргоо */
+/* Quote текст */
+/* === Testimonial блок зөв форматлах === */
+
+
+
+/* Шаардлагатай swiper wrapper болон slide layout */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  flex-direction: column;
+  text-align: center;
+  min-height: 300px;
+}
+
+blockquote.icon-top {
+  max-width: 600px;
+  width: 100%;
+  flex-direction: column;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+  padding: 0 1rem;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.blockquote-content {
+  margin-top: 1rem !important;
+  margin-bottom: 4rem !important;
+}
+
+.blockquote-details {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
+  text-align: center;
+  margin-top: 1rem;
+  line-height: 1.4;
+  display:block;
+}
+
+.blockquote-details h5 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0; /* зайг зөв зохицуулах */
+  text-align: right;
+  white-space: nowrap;
+  margin-top: 0rem; /* Эндээс зай авч шинэ мөрнөөс эхэлнэ */
+  display:block;
+}
+
+.blockquote-details p {
+  margin-bottom: 1rem;
+  font-size: 14px;
+  font-style: italic;
+  margin: 0.2rem 0 0 0;
+  color: #666;
+  text-align: right;
+  white-space: nowrap;
+  margin-top: 0rem; /* Эндээс зай авч шинэ мөрнөөс эхэлнэ */
+  display:block;
+}
+
+.swiper-container.dots-closer .swiper-slide:not(:first-child) {
+  display: none !important;
+}
+
+
+
+/* Responsive - optional */
+@media (max-width: 768px) {
+  blockquote.icon-top {
+    font-size: 0.95rem;
+    padding: 0 1rem;
+  }
+
+  .blockquote-details h5 {
+    font-size: 1rem;
+  }
+
+  .blockquote-details p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Зөвхөн Case Studies хэсгийн 3 зурагт хамаарах тохиргоо */
+.swiper-container.blog.grid-view .swiper-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.swiper-container.blog.grid-view .swiper-slide {
+  
+  flex: 1 1 calc(32%); /* зай арай багатай */
+  max-width: calc(33.333% - 30px);
+  box-sizing: border-box;
+}
+
+/* Зургийн хэмжээг зөв харуулах */
+.swiper-container.blog.grid-view .swiper-slide img {
+  height: 180px;
+ 
+  width: 300px;
+
+  display: block;
+  border-radius: 10px;
+}
+/* Зөвхөн Case Studies header-д зориулагдсан CSS */
+.swiper-container.blog.grid-view {
+  margin-top: 80px;
+}
+
+/* Жижиг гарчиг - "Case Studies" */
+.swiper-container.blog.grid-view ~ .row.text-center h2 {
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #999;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+/* Case Studies хэсгийн нийтлэл бүрийн (swiper-slide) доторх гарчиг */
+.swiper-slide .post-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 16px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Гарчигийн ерөнхий багцын зай */
+.swiper-slide .post-header {
+  padding: 0 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+/* Том гарчиг - "Check out some..." */
+.swiper-container.blog.grid-view ~ .row.text-center h3 {
+  font-size: 28px;
+  line-height: 1.4;
+  max-width: 720px;
+  margin: 0 auto 40px auto;
+  font-weight: 500;
+  color: #222;
+}
+/* Огноо ба ангиллыг нэг мөрөнд зэрэгцүүлэх */
+.swiper-slide .post-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #666;
+}
+/* Зөвхөн эхний 3 нийтлэлийг харуулах */
+.swiper-container.blog.grid-view .swiper-wrapper .swiper-slide:nth-child(n+4) {
+  display: none !important;
+}
+
+/* Огноо, ангилал icon-той хамт нэг түвшинд харагдуулах */
+.swiper-slide .post-meta li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Responsive гарчиг */
+@media (max-width: 768px) {
+  .swiper-container.blog.grid-view ~ .row.text-center h3 {
+    font-size: 24px;
+    padding: 0 20px;
+  }
+}
+
+/* Responsive: таблет */
+@media (max-width: 992px) {
+  .swiper-container.blog.grid-view .swiper-slide {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+/* Responsive: утас */
+@media (max-width: 600px) {
+  .swiper-container.blog.grid-view .swiper-slide {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* Хэтэрхий бага дэлгэц дээр 2 эсвэл 1 багана болгоно */
+@media (max-width: 992px) {
+  .case-studies-wrapper .swiper-slide {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 576px) {
+  .case-studies-wrapper .swiper-slide {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+/* ----------------------------
+   OUR TEAM SECTION CUSTOM CSS
+----------------------------- */
+/* Бүхэл хэсгийн дээд ба доод margin */
+.row.align-items-center {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+/* Responsive байрлал солих - зураг баруун, текст зүүн (>=992px) */
+@media (min-width: 992px) {
+  .row.align-items-center .col-md-8.col-lg-6 {
+    order: 2; /* Зураг баруун талд */
+  }
+
+  .row.align-items-center .col-lg-6:not(.col-md-8) {
+    order: 1; /* Текст зүүн талд */
+  }
+}
+
+/* Зургийн багц */
+.col-md-8.col-lg-6 figure {
+  margin: 0;
+}
+
+/* Зургийн хэмжээ ба хэлбэр */
+.col-md-8.col-lg-6 figure img {
+  width: 98%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+
+.icon-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 багана */
+  row-gap: 24px; /* Мөр хоорондын зай нэмэгдсэн */
+  column-gap: 40px; /* Багана хоорондын зай */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 700px;
+}
+
+.icon-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Icon стиль — яг зураг шиг саарал дугуй */
+.icon-list li i {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 100%;
+  background-color: #f3f4f6;         /* Цайвар саарал дэвсгэр */
+  color: #626174;                    /* Дотрох icon саарал */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  box-shadow: inset 0 0 0 1px #d1d5db; /* Гадна хүрээ */
+  margin-top: 3px;
+}
+
+
+
+/* Subtitle "OUR TEAM" */
+.col-lg-6 h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #999;
+  margin-bottom: 10px;
+ 
+}
+
+/* Том гарчиг */
+.col-lg-6 h3 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+/* Paragraph текст */
+.col-lg-6 p.mb-6 {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin-right: 20px;
+  margin-bottom: 40px;
+}
+
+/* Icon жагсаалтын ерөнхий тохиргоо */
+.icon-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.icon-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* Icon жагсаалтын icon (check icon) өнгө */
+.icon-list li i {
+  color: #ffffff; /* Зөөлөн цэнхэр өнгө */
+  font-size: 18px;
+  margin-top: 3px;
+}
+
+/* List-ийн текст хэсэг */
+.icon-list li span:last-child {
+  flex: 1;
+}
+
+/* Responsive padding бага дэлгэцэнд */
+@media (max-width: 768px) {
+  .row.align-items-center {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .col-lg-6 h3 {
+    font-size: 26px;
+  }
+
+  .col-lg-6 p.mb-6 {
+    font-size: 15px;
+  }
+}
+
+
+/* Icon */
+.icon-list li i {
+  color: #7964c5;
+  font-size: 18px;
+  margin-top: 2px;
+}
+
+/* Хоёр талын жагсаалтыг хооронд нь зайтай байлгах */
+.row.gy-3.gx-xl-8 {
+  margin-top: 10px;
+}
+
+/* Responsive (таблет, мобайл-д зориулсан) */
+@media (max-width: 767px) {
+  .col-lg-6 h3 {
+    font-size: 24px;
+  }
+  .col-lg-6 p.mb-6 {
+    font-size: 14px;
+  }
+  .icon-list li {
+    font-size: 14px;
+  }
+}
+
+
+/* Numbered icon */
+.icon.btn.btn-block.btn-lg {
+  width: 50px;
+  height: 50px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Step number text */
+.number.fs-22 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* Remove mt-8 and ms-lg-10 if unnecessary spacing */
+.mt-8 {
+  margin-top: 2rem !important;
+}
+
+.ms-lg-10 {
+  margin-left: 0 !important;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .gx-md-8.gx-xl-12.gy-10.align-items-center {
+    flex-direction: column;
+  }
+
+  .gx-md-8.gx-xl-12.gy-10.align-items-center .col-lg-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+
+
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 500;
+  margin-top: 40px;
+  color: #1b1e23;
+}
+h5{
+  font-family: 'Arial', 'Helvetica Neue', sans-serif;
+
+}
+h1.display-1 {
+  font-size: 3.625rem;
+}
+
+h3.display-4 {
+  font-size: 2rem;
+
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+section.wrapper.bg-gray {
+  background-color: #f2f3f5;
+    position: relative;
+   
+  }
+
+
+
+.btn-primary {
+  background-color: #2e3a51; /* GVE шиг өнгө */
+  color: #fff;
+  border: none; /* зураасгүй */
+  border-radius: 50px;
+  padding: 2rem 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: none; /* сүүдэргүй */
+  transition: background-color 0.3s ease;
+  margin-top: 60px !important;
+}
+
+.btn-primary:hover {
+  background-color: #1e2a39; /* hover үед арай гүн өнгө */
+  color: #5d5858;
+  text-decoration: none;
+
+}
+.btn {
+  box-shadow: none;
+  text-decoration: none;
+}
+
+.btn:focus,
+.btn:active {
+  outline: none;
+  box-shadow: none;
+}
+
+
+.btn-outline-primary {
+  color: #2e3a51;
+  border: 2px solid #2e3a51;
+  background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+  background-color: #2e3a51;
+  color: white;
+  
+}
+
+/* Services Section */
+.gx-md-8 {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.gy-8 {
+  margin-top: -15px;
+  margin-bottom: -15px;
+}
+
+.gx-md-8 > .col-md-4 {
+  padding: 15px;
+}
+
+.icon.btn.btn-block {
+  width: 50px;
+  height: 50px;
+  border-radius: 40%;
+  margin: 0 auto 1.25rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-soft-purple {
+  background-color: rgba(116, 126, 209, 0.1);
+  color: var(--purple);
+}
+
+.btn-soft-green {
+  background-color: rgba(69, 196, 160, 0.1);
+  color: var(--green);
+}
+
+.btn-soft-orange {
+  background-color: rgba(250, 183, 88, 0.1);
+  color: var(--orange);
+}
+
+.more {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.more:after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 5px;
+  height: 5px;
+  border-top: 1px solid;
+  border-right: 1px solid;
+  margin-left: 0.3rem;
+  transform: rotate(45deg);
+}
+
+.link-purple {
+  color: var(--purple);
+}
+
+.link-green {
+  color: var(--green);
+}
+
+.link-orange {
+  color: var(--orange);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 24px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.75rem;
+  position:relative;
+  margin-top: 400px;
+  z-index: 2;
+  box-shadow: 0 0 2rem rgba(30, 34, 40, 0.05);
+}
+
+.card-body {
+  padding: 3rem;
+}
+
+.accordion-button {
+  font-weight: 600;
+  color: #1b1e23;
+  background-color: #f8f9fa;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #e4e7eb;
+  color: #1b1e23;
+}
+
+.bg-dark {
+  background-color: #1c1f26 !important;
+}
+
+footer p, footer a, footer h4 {
+  color: #ccc !important;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+/* Typography helpers */
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.fs-15 {
+  font-size: 0.9375rem;
+}
+
+.fs-16 {
+  font-size: 1rem;
+}
+
+.fs-22 {
+  font-size: 1.375rem;
+}
+
+/* Counters */
+.counter {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Testimonials */
+
+
+blockquote .blockquote-details h5 {
+  font-weight: 600;
+  color: #222;
+}
+
+/* Blog section */
+.post-title a {
+  text-decoration: none;
+  color: #1b1e23;
+}
+
+.post-title a:hover {
+  color: #ffffff;
+}
+
+/* Join Section */
+.bg-map {
+  background-color: #e5f0ff;
+  background-size: cover;
+}
+
+/* Responsive Swiper placeholders */
+.swiper-container .swiper-slide {
+  transition: transform 0.4s ease;
+}
+
+.swiper-container .swiper-slide:hover {
+  transform: scale(1.02);
+}
+.wrapper {
+  padding-top: 3rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.bg-gray {
+  background-color: #f2f3f5;
+}
+.navbar {
+  padding: 1rem 0;
+}
+
+.navbar-light {
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.navbar-bg-light {
+  background-color: #fff;
+}
+.navbar-brand img {
+  max-height: 40px;
+}
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 50px;
+}
+
+.display-1 {
+  font-size: 3.625rem; /* 58px */
+  font-weight: 700;
+  color: #1b1e23;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  width: 700px;
+}
+
+.display-4 {
+  font-size: 2.0rem;
+  
+  
+}
+
+.fs-15 {
+  font-size: 15px;
+}
+
+
+.fs-58 {
+  font-size: 58px;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+.text-dark {
+  color: #1b1e23;
+}
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 24px;
+}
+
+.btn-soft-purple {
+  background-color: #d9d2f4;
+  color: #6c4ab3;
+}
+
+.btn-soft-green {
+  background-color: #d2f4e4;
+  color: #3ca36c;
+}
+
+.btn-soft-orange {
+  background-color: #fde4cf;
+  color: #ea7a1f;
+}
+.card {
+  border-radius: 0.75rem;
+  background-color: white;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.05);
+}
+
+.card-body {
+  padding: 3rem;
+}
+.accordion-button {
+  font-weight: bold;
+  color: #1b1e23;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border: none;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #e4e7eb;
+  color: #1b1e23;
+}
+blockquote {
+  font-style: italic;
+  color: #444;
+  padding: 1rem 2rem;
+}
+
+.blockquote-details h5 {
+  font-weight: bold;
+  color: #1b1e23;
+}
+.post-title a {
+  color: #1b1e23;
+  text-decoration: none;
+}
+
+.post-title a:hover {
+  color: #a7aabd;
+}
+
+.post-meta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #777;
+  font-size: 0.9rem;
+}
+footer .d-md-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.rounded {
+  border-radius: 0.5rem;
+}
+
+.shadow {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+}
+
+
+footer h4,
+footer a {
+  color: #ccc;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: white;
+}
+.progress-wrap {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  height: 60px;
+  width: 60px;
+  z-index: 99;
+}
+
+.progress-wrap svg path {
+  stroke: #ffffff;
+  stroke-width: 4;
+  fill: none;
+}
+/* == Navbar Wrapper Structuring == */
+.navbar-collapse-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbar-brand {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-collapse {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-other {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+/* accordion why choose us*/
+.col-lg-6 h3.display-4 {
+  margin-bottom: 1rem;}
+.accordian.accordion-wrapper {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.accordion-item {
+  margin-bottom: 0.5rem;
+  background-color: #ffffff;
+  border: 1px solid #e7e7e7;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  padding-bottom: 1rem;
+}
+.accordion-body p {
+  margin-bottom: 0.5rem; /* эсвэл бүр 0rem */
+}
+#collapseTwo .card-body,
+#collapseThree .card-body {
+  height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+
+.card.plain {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin-top: 4px;
+}
+.accordion-button {
+  background-color: white;
+  font-weight: 600;
+  font-size: 1.125rem;
+  padding: 0.75rem 1rem; /* Consistent padding */
+  color: #1f2d3d;
+  border: none;
+  box-shadow: none;
+  transition: background-color 0.3s ease;
+  margin-top: 0; /* Consistent margin */
+  margin-bottom: 0;
+}
+.collapsed{
+  background-color: white;
+  font-weight: 600;
+  font-size: 1.125rem;
+  padding: 0.75rem 1rem;
+  color: #1f2d3d;
+  border: none;
+  margin-top: 0; /* Consistent margin */
+  margin-bottom: 0;
+  box-shadow: none;
+}
+.collapsed::after{
+  content: '\25BC';
+  float: left;
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+.accordion-collapse {
+  border: none;
+  margin-bottom: 0rem;
+  margin-top: 0rem;
+
+}
+.accordion-body {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.accordion-button::after {
+  content: '\25BC';
+  float: left;
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+.accordion-button[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+/* suuliinh*/
+/* CTA block wrapper background image, padding, text center */
+.wrapper.image-wrapper.bg-map {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+/* Гарчиг текст */
+.wrapper.image-wrapper.bg-map h3 {
+  font-size: 32px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #222;
+  margin: 0 auto;
+  max-width: 900px;
+}
+.wrapper.image-wrapper.bg-map {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none;
+}
+
+.btn.btn-primary.rounded-pill {
+  padding: 13px 24px;
+  margin-top: 200px;
+  font-size: 20px;
+}
+.d-flex.justify-content-center {
+  margin-top: 30px; /* 20px-ээр доошлуулж байна, хүсвэл өөрчилж болно */
+}
+
+/* Responsive текст хэмжээ */
+@media (max-width: 992px) {
+  .wrapper.image-wrapper.bg-map h3 {
+    font-size: 26px;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .wrapper.image-wrapper.bg-map h3 {
+    font-size: 22px;
+  }
+}
+
+
+/* Footer Styling */
+footer.bg-dark {
+  background-color: #2d343f;
+  color: #fff;
+  margin: 0 auto;     /* голд төвлөрүүлэх */
+  width: 100%; /* vw биш, 100% байвал container-тайгаа таарна */
+  max-width: 1200px; /* Container-ийн өргөнтэй адил байлгах */
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  margin-top: -2rem; /* эсвэл -3rem, илүү дээр гарч ирнэ */
+  z-index: 1;
+  position: relative;
+
+}
+
+footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+footer .row.gy-6.gy-lg-0 {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+footer .row.gy-6.gy-lg-0 > div {
+  flex: 1;
+  min-width: 0;
+}
+
+footer hr {
+  border-color: rgba(255, 255, 255, 0.1);
+  margin: 2rem 0;
+}
+
+footer .d-md-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  flex-wrap: wrap;
+}
+
+footer p,
+footer .social a,
+footer address,
+footer a {
+  color: rgba(210, 200, 197, 0.75);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+footer .social a {
+  margin-left: 1rem;
+  font-size: 1.1rem;
+}
+.lead.mb-5 {
+  margin-top: 100px !important;
+  margin-bottom: 30px;
+}
+footer h3.h2.text-white {
+  margin-top: 240px;
+  margin-bottom: -70px;
+  color: #cdcfd6;
+  font-size: 1.1rem;
+}
+footer .social a:hover,
+footer a:hover {
+  color: #fff;
+}
+
+footer .btn-white {
+  background-color: #fff;
+  color: #2d343f;
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-top: -4rem;
+}
+
+footer .btn-white:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+footer hr {
+  margin: 3rem 0 2rem 0 !important;
+  border-color: rgba(235, 223, 223, 0.1);
+}
+
+footer .social a {
+  display: inline-block;
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+footer .social a:hover {
+  color: white;
+}
+
+footer .btn {
+  padding: 0.8rem 2rem;
+  transition: all 0.3s ease;
+}
+
+footer .btn-white {
+  background-color: #fff;
+  color: #2d343f;
+  border: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+footer .btn-white:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.row.gy-6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.row.gy-6 > div {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+footer .row.gy-6.gy-lg-0 {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+footer .row.gy-6.gy-lg-0 > div {
+  flex: 1;
+  min-width: 0;
+}
+
+
+@media (min-width: 992px) {
+  .row.gy-lg-0 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .row.gy-lg-0 > div {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+/* === FLEXBOX & NAVIGATION SUPPORT === */
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-nav .nav-item {
+  margin: 0 10px;
+}
+
+.navbar-nav .nav-link {
+  text-decoration: none;
+  color: #1b1e23;
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #cdcfd6;
+}
+
+
+
+
+
+.card.plain {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.collapsed{
+  background-color: white;
+  font-weight: 600;
+  font-size: 1.125rem;
+  padding: 0.75rem 1rem;
+  color: #1f2d3d;
+  border: none;
+  margin-top: 0; /* Consistent margin */
+  margin-bottom: 0;
+  box-shadow: none;
+}
+.collapsed::after{
+  content: '\25BC';
+  float: left;
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+
+
+
+
+.d-flex {
+  display: flex !important;
+}
+
+.flex-row {
+  flex-direction: row !important;
+}
+
+.flex-column {
+  flex-direction: column !important;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.ms-auto {
+  margin-left: auto !important;
+}
+
+.me-2 {
+  margin-right: 0.5rem !important;
+}
+
+.me-5 {
+  margin-right: 3rem !important;
+}
+
+.mt-1 {
+  margin-top: 0.25rem !important;
+}
+
+.mt-8 {
+  margin-top: 5rem !important;
+}
+
+.text-end {
+  text-align: right !important;
+}
+
+.d-lg-none {
+  display: none !important;
+}
+.navbar-brand img {
+  max-height: 40px;
+  display: block;
+}
+.offcanvas-nav-btn {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #000;
+  margin: 5px 0;
+}
+
+
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+  .text-and-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text-and-image > div {
+    flex: 1;
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .d-lg-none {
+    display: block !important;
+  }
+  .offcanvas {
+    display: none;
+  }
+}
