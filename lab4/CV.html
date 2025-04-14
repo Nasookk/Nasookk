@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Engineer CV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .cv-container {
+            max-width: 900px;
+            background: white;
+            margin: auto;
+            display: flex;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .left-column {
+            width: 35%;
+            background: #185c41;
+            color: white;
+            padding: 20px;
+        }
+        .profile-pic {
+            width: 100%;
+            border-radius: 10px;
+            border: 3px solid white;
+        }
+        .right-column {
+            width: 65%;
+            padding: 20px;
+        }
+        h2, h3 {
+            color: #34db7a;
+        }
+        .section-title {
+            border-bottom: 2px solid #2aed82;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        .info, .skills, .achievements, .references, .languages {
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .work-exp ul {
+            list-style-type: square;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        .progress-bar {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #34db7a;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 12px;
+    margin: 10px 0;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3px);
+}
+.school-logo {
+    text-align: center; /* Логог төвлөрүүлнэ */
+    margin-bottom: 20px; /* Бусад хэсгээс зай авна */
+}
+
+.school-logo img {
+    border-radius: 10px; /* Логоны ирийг засаж, зөөлрүүлнэ */
+}
+
+
+.progress {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #34db7a, #2c8a64);
+    animation: loadProgress 1.5s ease-out;
+    transition: width 0.6s ease-in-out;
+}
+
+        .language-level {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <!-- Зүүн багана -->
+        <div class="left-column">
+            <img src="profile.png" alt="Profile Picture" class="profile-pic">
+            <h2>Нарансолонго&nbsp;&nbsp;<span style="color:#34db7a;">Буяндэлгэр</span></h2>
+            <p><strong>Програм хангамжийн инжинер</strong></p>
+            
+            <div class="info contact-info">
+                <h3 class="section-title">Холбоо барих</h3>
+                <p>📧 <a>naransolongo.0120@gmail.com</a></p>
+                <p>📸 <a href="https://www.instagram.com/nasoookk?igsh=NDl2dXRkOHNsd3l4&utm_source=qr" target="_blank" style="color:white;">Instagram</a></p>
+                <p>📘 <a href="https://www.facebook.com/people/%D0%91-%D0%9D%D0%B0%D1%80%D0%B0%D0%BD%D1%81%D0%BE%D0%BB%D0%BE%D0%BD%D0%B3%D0%BE/pfbid02QcUTbSDcqom1RSXcuswWnHiJtaXEaRjmuYNUvefKwgwd9iAZrRZJTUkG9guDbkKVl/" target="_blank" style="color:white;">Facebook</a></p>
+                <p>📞 +976-80275058</p>
+                <p>📍 Улаанбаатар, Монгол</p>
+                <p>🔗 <a href="https://chigtsaa.github.io/ " style="color:white;">chigtsaa.github.io</a></p>
+            </div>
+
+            <div class="skills">
+                <h3 class="section-title">Ур чадвар</h3>
+                <ul>
+                    <li>Python, Html,Css, C, C++</li>
+                    <li>React, Node.js</li>
+                    <li>MySQL</li>
+                </ul>
+            </div>
+
+            <div class="achievements">
+                <h3 class="section-title">Амжилтууд</h3>
+                <ul>
+                    <li><strong>Turing Award</strong> – 2027</li>
+                    <li><strong>Google Cloud Professional Engineer</strong> – 2027</li>
+                    <li><strong>IEEE John von Neumann Medal</strong> – 2028</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Баруун багана -->
+        <div class="right-column">
+            <div class="education">
+                <h3 class="section-title">Боловсрол</h3>
+                
+                <p><strong>Бакалавр: Мэдээллийн технологи</strong></p>
+                <p>МУИС, МТЭС, 2023 - 2027</p>
+                    
+                    <div class="school-logo">
+                        <img src="school-logo.png" alt="Сургуулийн лого" width="100" height="100"> <!-- Сургуулийн логог оруулна -->
+                    </div>
+                
+                
+                <p><strong>Магистр: Imformation Technolgy</strong></p>
+                <p>Massachusetts Institute of Technology (MIT) , 2028 - 2030</p>
+                 <div class="school-logo">
+                        <img src="image.png" alt="Сургуулийн лого" width="100" height="100"> <!-- Сургуулийн логог оруулна -->
+                    </div>
+            </div>
+
+            <div class="work-exp">
+                <h3 class="section-title">Ажлын туршлага</h3>
+                
+                <h4>Software Developer</h4>
+                <p>Одоо-2027</p>
+                <ul>
+                    <li>Front-веб хөгжүүлэлт</li>
+                    <li>Сүлжээний админ</li>
+                </ul>
+            </div>
+            <div class="certificates">
+                <h3 class="section-title">Сертификат</h3>
+                <ul>
+                    <li>Meta Front-End Developer – Coursera, 2026</li>
+                    <li>Google IT Support Certificate – 2025</li>
+                    <li>Responsive Web Design – freeCodeCamp, 2024</li>
+                </ul>
+            </div>
+            <div class="hobbies">
+                <h3 class="section-title">Хобби</h3>
+                <ul>
+                    <li>Програмчлалын шинэ технологи судлах</li>
+                    <li>Веб хөгжүүлэлтээр мэргэших</li>
+                    <li>Зураг төслийн дизайн гаргах</li>
+                    <li>Спорт: Волейбол, агаарын теннис</li>
+                </ul>
+            </div>            
+            <div class="languages">
+                 <h3 class="section-title">Бусад чадвар</h3>
+                <ul>
+                    <li>Багаар ажиллах</li>
+                    <li>Хоол сайн хийх</li>
+                    <li>Кареокед сайн дуулах</li>
+                    <li>Англи, Хятадаар чөлөөтэй ярих</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
