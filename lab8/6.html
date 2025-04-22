@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тоот олох</title>
+</head>
+<body>
+
+    <h2>Тоот аль орц аль давхарт байна вэ?</h2>
+    <input type="number" id="flatInput" placeholder="Тоот">
+    <button onclick="findFlatInfo()">Шалгах</button>
+    <p id="result"></p>
+
+    <script>
+        function findFlatInfo() {
+            const number = parseInt(document.getElementById("flatInput").value);
+            const perFloor = 4;
+            const floors = 9;
+            const entrances = 3;
+            const flatsPerEntrance = perFloor * floors;
+
+            if (number < 1 || number > entrances * flatsPerEntrance) {
+                document.getElementById("result").innerText = "Ийм тоот байхгүй.";
+                return;
+            }
+
+            const entrance = Math.ceil(number / flatsPerEntrance);
+            const within = number - (entrance - 1) * flatsPerEntrance;
+            const floor = Math.ceil(within / perFloor);
+            const door = ((within - 1) % perFloor) + 1;
+
+            document.getElementById("result").innerText = `${entrance}-р орц, ${floor}-р давхар, ${door}-р тоот.`;
+        }
+    </script>
+
+</body>
+</html>

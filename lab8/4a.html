@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Чоно туулайг хэдэн минут хэдэн секундэд гүйцэх вэ?</title>
+</head>
+<body>
+
+  <script>
+    let zai = ""; // Чоноос туулай хүртэлх зай (метрээр)
+
+    // Зайг зөв оруултал асууна
+    while (!zai || isNaN(zai) || zai <= 0) {
+      zai = window.prompt("Чоноос туулай хүртэлх зайг метрээр оруулна уу:");
+      if (!zai || isNaN(zai) || zai <= 0) {
+        alert("Бодит, тоон утга оруулна уу (жишээ нь: 1000)");
+      }
+    }
+
+    zai = parseFloat(zai); // Тоон утга руу хөрвүүлнэ
+
+    // Хурдыг метр/секунд болгон хөрвүүлнэ
+    let chononiiHurd = 25 * 1000 / 3600;     // ≈ 6.94 м/с
+    let tuulainiiHurd = 18 * 1000 / 3600;    // ≈ 5 м/с
+
+    let zuruu = chononiiHurd - tuulainiiHurd; // Харьцангуй хурд ≈ 1.94 м/с
+
+    let hugatsaa = zai / zuruu; // Секундээр (нийт хугацаа)
+
+    let minutes = Math.floor(hugatsaa / 60);
+    let seconds = Math.round(hugatsaa % 60);
+
+    document.writeln(`Чоно ${minutes} минут ${seconds} секундын дараа туулайг гүйцэх болно.`);
+  </script>
+
+</body>
+</html>

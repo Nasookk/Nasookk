@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Палиндром шалгах</title>
+</head>
+<body>
+  <h2>Нэрээ оруулна уу</h2>
+  <input type="text" id="nameInput">
+  <button onclick="checkPalindrome()">Шалгах</button>
+  <p id="result"></p>
+
+  <script>
+    function checkPalindrome() {
+      let name = document.getElementById("nameInput").value.toLowerCase();
+      let reversed = name.split("").reverse().join("");
+      if (name === reversed) {
+        document.getElementById("result").textContent = "Палиндром байна.";
+      } else {
+        document.getElementById("result").textContent = "Палиндром биш байна.";
+      }
+    }
+  </script>
+</body>
+</html>

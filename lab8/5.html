@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тэгш сондгой ялгах</title>
+</head>
+<body>
+
+    <h2>Array тэгш сондгой ялгах</h2>
+    <input type="text" id="arrayInput">
+    <button onclick="splitEvenOdd()">Ялгах</button>
+    <p id="result"></p>
+
+    <script>
+        function splitEvenOdd() {
+            const arr = document.getElementById("arrayInput").value.split(',').map(Number);
+            const even = arr.filter(x => x % 2 === 0);
+            const odd = arr.filter(x => x % 2 !== 0);
+            document.getElementById("result").innerText = `Тэгш: ${even.join(', ')}     Сондгой: ${odd.join(', ')}`;
+        }
+    </script>
+
+</body>
+</html>

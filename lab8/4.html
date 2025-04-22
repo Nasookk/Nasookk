@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Чоно туулайг гүйцэх хугацаа</title>
+</head>
+<body>
+  <h2>Чоно туулайг гүйцэх хугацааг тооцоолох</h2>
+  <label for="distance">Зай (км): </label>
+  <input type="number" id="distance" >
+  <button onclick="calculateTime()">Тооцоолох</button>
+  <p id="result"></p>
+
+  <script>
+    function calculateTime() {
+      let distance = parseFloat(document.getElementById("distance").value);
+      let result = document.getElementById("result");
+      
+      if (isNaN(distance) || distance <= 0) {
+        result.textContent = "Зай оруулна уу.";
+        return;
+      }
+
+      // Ялгаа хурд (чононы хурд - туулайны хурд)
+      const speedDifference = 7; // км/ц
+
+      // Тооцоолсон хугацаа (цаг)
+      let timeInHours = distance / speedDifference;
+
+      // Цагийг минут, секунд рүү шилжүүлэх
+      let minutes = Math.floor(timeInHours * 60);
+      let seconds = Math.floor((timeInHours * 60 - minutes) * 60);
+
+      result.textContent = `Чоно туулайг ${minutes} минут ${seconds} секундын дараа гүйцнэ.`;
+    }
+  </script>
+</body>
+</html>

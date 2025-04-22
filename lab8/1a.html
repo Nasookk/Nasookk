@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Палиндром шалгах</title>
+</head>
+<body>
+  <script>
+    // Хэрэглэгчээс нэрийг асууна
+    let name = "";
+    while (!name) {
+      name = window.prompt("Нэрээ оруулна уу:");
+      if (!name) {
+        alert("Та нэр оруулаагүй байна. Та оруулна уу.");
+      }
+    }
+      // Том үсгийг жижиг болгоно, үсэгнээс бусдыг хасна
+      let clean = name.toLowerCase().replace(/[^a-zа-яёөү]/gi, '');
+      // Урвуу болгоод харьцуулна
+      let isPalindrome = clean === clean.split('').reverse().join('');
+      // Үр дүнг харуулна
+      document.writeln(isPalindrome ? `"${name}" таны нэр палиндром байна.` : `"${name}" таны нэр палиндром биш байна.`);
+    
+  </script>
+</body>
+</html>

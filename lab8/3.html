@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Анхны тооны нийлбэрийн бүх боломж</title>
+</head>
+<body>
+  <h2>Тоог анхны тоонуудын нийлбэрт задал (бүх хувилбар)</h2>
+  <input type="number" id="numberInput" placeholder="Жишээ: 10">
+  <button onclick="findAllPrimeSums()">Бодолт</button>
+  <div id="result"></div>
+
+  <script>
+    function isPrime(n) {
+      if (n < 2) return false;
+      for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return false;
+      }
+      return true;
+    }
+
+    function findAllPrimeSums() {
+      const target = parseInt(document.getElementById("numberInput").value);
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = "";
+
+      if (isNaN(target) || target < 2) {
+        resultDiv.textContent = "2 буюу түүнээс дээш бүхэл тоо оруулна уу.";
+        return;
+      }
+
+      const primes = [];
+      for (let i = 2; i <= target; i++) {
+        if (isPrime(i)) primes.push(i);
+      }
+
+      const results = [];
+
+      function backtrack(current, sum, start) {
+        if (sum === target) {
+          results.push([...current]);
+          return;
+        }
+        if (sum > target) return;
+
+        for (let i = start; i < primes.length; i++) {
+          current.push(primes[i]);
+          backtrack(current, sum + primes[i], i); // дахин ашиглаж болно
+          current.pop();
+        }
+      }
+
+      backtrack([], 0, 0);
+
+      if (results.length === 0) {
+        resultDiv.textContent = `${target} нь анхны тоонуудын нийлбэрт задарч чадсангүй.`;
+      } else {
+        resultDiv.innerHTML = `<strong>${results.length} хувилбар олдлоо:</strong><br><br>` +
+          results.map(r => r.join(" + ")).join("<br>");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Цифрийн нийлбэр</title>
+</head>
+<body>
+  <h2>Тоо оруулна уу:</h2>
+  <input type="text" id="numberInput">
+  <button onclick="calculateDigitSum()">Бодолт</button>
+  <p id="sumResult"></p>
+
+  <script>
+    function calculateDigitSum() {
+      const input = document.getElementById("numberInput").value;
+      let sum = 0;
+      for (let i = 0; i < input.length; i++) {
+        const char = input[i];
+        if (!isNaN(char) && char !== " ") {
+          sum += parseInt(char);
+        }
+      }
+      document.getElementById("sumResult").textContent = "Цифрийн нийлбэр: " + sum;
+    }
+  </script>
+</body>
+</html>

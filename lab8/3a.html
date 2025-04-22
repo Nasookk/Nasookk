@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Тоог анхны тоонуудын нийлбэрт задал</title>
+</head>
+<body>
+  <script>
+    // Анхны тоо эсэхийг шалгах функц
+    function isPrime(n) {
+      if (n < 2) return false;
+      for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return false;
+      }
+      return true;
+    }
+
+    // Хэрэглэгчээс тоо авна
+    let input = "";
+    while (!input || isNaN(input) || input < 2) {
+      input = prompt("2 эсвэл түүнээс дээш бүхэл тоо оруулна уу:");
+      if (!input || isNaN(input) || input < 2) {
+        alert("Та зөв тоо оруулна уу.");
+      }
+    }
+
+    let target = parseInt(input);
+    let found = false;
+
+    // Задалж эхэлнэ
+    for (let i = 2; i <= target; i++) {
+      if (isPrime(i) && isPrime(target - i)) {
+        document.writeln(`${target} = ${i} + ${target - i}`);
+        found = true;
+        break;
+      }
+    }
+
+    // Хэрвээ задлал олдоогүй бол
+    if (!found) {
+      document.writeln(`${target} нь 2 анхны тооны нийлбэр хэлбэрт задардаггүй.`);
+    }
+  </script>
+</body>
+</html>

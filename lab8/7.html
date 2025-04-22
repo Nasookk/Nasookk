@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цагаас хамаарах</title>
+    <style>
+        #shape {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="shape"></div>
+
+    <script>
+        const now = new Date();
+        const hour = now.getHours();
+        const shape = document.getElementById("shape");
+
+        if (hour < 12) {
+            shape.style.backgroundColor = "green";
+            shape.style.top = "0";
+            shape.style.left = "0";
+            shape.style.bottom = "";
+            shape.style.right = "";
+        } else {
+            shape.style.backgroundColor = "red";
+            shape.style.bottom = "0";
+            shape.style.right = "0";
+            shape.style.top = "";
+            shape.style.left = "";
+        }
+    </script>
+
+</body>
+</html>

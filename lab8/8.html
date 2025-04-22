@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <title>Петя хожих хамгийн эхний боломжит k</title>
+</head>
+<body>
+  <h2>Петя хожих хамгийн эхний зоосны тоог (k) олно</h2>
+  <label>Нийт зоосны тоо (n): <input type="number" id="nInput"></label>
+  <br><br>
+  <button onclick="findWinningK()">Тооцоолох</button>
+  <p id="result"></p>
+
+  <script>
+    function findWinningK() {
+      const n = parseInt(document.getElementById("nInput").value);
+      const result = document.getElementById("result");
+
+      // k-г 1-ээс n хүртэл туршиж үзнэ
+      for (let k = 1; k < n; k++) {
+        let remaining = n;
+
+        // Петя эхлээд k авна
+        remaining -= k;
+
+        // Дараа нь тоглогчид ээлжлэн тоглоно
+        let turn = 1; // 1 = найз, 0 = петя
+        let currentMax = k + 1;
+
+        while (remaining > 0) {
+          let take = Math.min(currentMax, remaining);
+          remaining -= take;
+
+          if (remaining === 0) {
+            if (turn === 1) {
+              // Хамгийн сүүлийн зоосыг найз авсан → Петя хожсон
+              result.textContent = `Петя эхэнд ${k} зоос авбал заавал хожно.`;
+              return;
+            } else {
+              break;
+            }
+          }
+
+          currentMax = take + 1;
+          turn = 1 - turn;
+        }
+      }
+
+      result.textContent = "Хожих боломжгүй тул хариу: 0";
+    }
+  </script>
+</body>
+</html>
