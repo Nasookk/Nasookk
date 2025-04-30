@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Валютын Хөрвүүлэгч</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #282c34;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .converter {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+      text-align: center;
+      align-items: center;
+      width: 340px;
+      color: white;
+    }
+
+    #amount {
+      width: 100%;
+      padding: 5px;
+      font-size: 2em;
+      margin-bottom: 20px;
+      border: none;
+      position: relative;
+      border-radius: 10px;
+      text-align: right;
+      background: #000;
+      color: #0f0;
+      box-shadow: inset 0 0 10px #0f0;
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .keypad button {
+      padding: 18px;
+      font-size: 1.5em;
+      border-radius: 80%;
+      border: none;
+      cursor: pointer;
+      background: #444;
+      color: white;
+      transition: 0.2s;
+      box-shadow: 0 4px #222;
+    }
+
+    .keypad button:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px #111;
+    }
+
+    .keypad button:nth-child(10),
+    .keypad button:nth-child(12) {
+      background-color: #ff4d4d;
+    }
+
+    .keypad button:nth-child(12) {
+      background-color: #0f0;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+      background: #333;
+      color: white;
+      font-size: 1em;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 1.4em;
+      font-weight: 600;
+      color: #0f0;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="converter">
+    <input type="text" id="amount" readonly placeholder="0">
+    
+    <div class="keypad">
+      <button onclick="appendNumber('1')">1</button>
+      <button onclick="appendNumber('2')">2</button>
+      <button onclick="appendNumber('3')">3</button>
+      <button onclick="appendNumber('4')">4</button>
+      <button onclick="appendNumber('5')">5</button>
+      <button onclick="appendNumber('6')">6</button>
+      <button onclick="appendNumber('7')">7</button>
+      <button onclick="appendNumber('8')">8</button>
+      <button onclick="appendNumber('9')">9</button>
+      <button onclick="clearInput()">C</button>
+      <button onclick="appendNumber('0')">0</button>
+      <button onclick="convert()">=</button>
+    </div>
+
+    <label for="fromCurrency">From:</label>
+    <select id="fromCurrency"></select>
+
+    <label for="toCurrency">To:</label>
+    <select id="toCurrency"></select>
+
+    <div class="result" id="result">Converted amount: 0</div>
+  </div>
+
+  <script>
+    const exchangeArray = [
+      { name: 'USD', value: 1 },
+      { name: 'EUR', value: 0.88 },
+      { name: 'POUND', value: 0.75 },
+      { name: 'WON', value: 1433 },
+      { name: 'YEN', value: 142 },
+      { name: 'YAN', value: 7.31 },
+      { name: 'MNT', value: 3537 }
+    ];
+
+    window.onload = () => {
+      const from = document.getElementById("fromCurrency");
+      const to = document.getElementById("toCurrency");
+      exchangeArray.forEach(currency => {
+        const option1 = new Option(currency.name, currency.value);
+        const option2 = new Option(currency.name, currency.value);
+        from.add(option1.cloneNode(true));
+        to.add(option2.cloneNode(true));
+      });
+    };
+
+    function appendNumber(num) {
+      const input = document.getElementById("amount");
+      if (input.value === "0") {
+        input.value = num;
+      } else {
+        input.value += num;
+      }
+    }
+
+    function clearInput() {
+      document.getElementById("amount").value = "0";
+      document.getElementById("result").innerText = "Converted amount: 0";
+    }
+
+    function convert() {
+      const amount = parseFloat(document.getElementById("amount").value);
+      const from = parseFloat(document.getElementById("fromCurrency").value);
+      const to = parseFloat(document.getElementById("toCurrency").value);
+      const converted = (amount / from) * to;
+      document.getElementById("result").innerText = "Converted amount: " + converted.toFixed(2);
+    }
+  </script>
+</body>
+</html>
