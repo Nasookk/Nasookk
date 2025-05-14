@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <title>Дүүжилдэг тоглоом</title>
+  <style>
+  body {
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 50px;
+  background: url('image.png');
+  background-size: 950px;
+  color: #45a049;;
+}
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    #nicknameInput {
+      margin-top: 20px;
+    }
+    #nicknameInput input {
+      padding: 10px;
+      font-size: 18px;
+      width: 200px;
+      border-radius: 5px;
+      border: 2px solid #45a049;
+      background-color: rgba(255, 254, 254, 0.902);
+    }
+    #nicknameInput button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #45a049;
+      color: rgb(255, 255, 255);
+      border: none;
+      border-radius: 5px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    #nicknameInput button:hover {
+      background-color: #45a049;
+    }
+    #gameArea {
+      display: none;
+      margin-top: 30px;
+    }
+    .letter-box {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: 2px solid #000000;
+      margin: 2px;
+      font-size: 30px;
+      line-height: 40px;
+      color: #87cf97;
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+   
+    .keyboard button:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+    #timer {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+
+    #keyboard {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .keyboard-row {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 5px;
+    }
+    .keyboard-row button {
+      margin: 2px;
+      padding: 10px 12px;
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.6);
+      border: 2px solid #000000;
+      color: #000000;
+    }
+    .keyboard-row button:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+
+    canvas {
+      border: 1px solid #e6e2e2;
+      margin-top: 20px;
+    }
+    .letter-box { display: inline-block; width: 40px; height: 40px; border: 2px solid #333; margin: 2px; font-size: 24px; line-height: 40px; }
+    .keyboard button { margin: 5px; padding: 10px 15px; font-size: 18px; }
+    #timer { font-size: 24px; margin: 20px 0; }
+    #hint { font-size: 18px; color: #666; margin: 10px 0; }
+    #keyboard {
+      display: flex; flex-direction: column; align-items: center; margin-top: 20px;
+    }
+    .keyboard-row { display: flex; justify-content: center; margin-bottom: 5px; }
+    .keyboard-row button { margin: 2px; padding: 10px 12px; font-size: 16px; }
+    canvas { border: 1px solid #ccc; margin-top: 20px; }
+    #gameOverModal, #top10Modal {
+      display: none; position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%; background: rgba(0,0,0,0.7);
+      justify-content: center; align-items: center;
+    }
+    .modal-content {
+      background: white; padding: 30px;  margin-top: -450px; border-radius: 8px; text-align: center;
+    }
+    #scoreboardList li { font-size: 18px; text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>Дүүжилж алвал хохин шүү</h1>
+
+
+
+  <div id="nicknameInput">
+    <input type="text" id="nickname" placeholder="Нэрээ оруулна уу" />
+    <button onclick="startGame()">Эхлэх</button>
+  </div>
+
+
+  <div id="gameArea" style="display:none;">
+    <div id="hint"></div>
+    <div id="word"></div>
+    <div id="timer">Цаг: 60</div>
+    <div class="keyboard" id="keyboard"></div>
+    <div id="score">Оноо: 0</div>
+    <canvas id="hangmanCanvas" width="200" height="250"></canvas>
+    <br><button onclick="showTop10()">TOP 10 тоглогч харах</button>
+  </div>
+
+  <div id="gameOverModal">
+    <div class="modal-content">
+      <h2>Та хожигдлоо!</h2>
+         <p id="top5Message" style="display: none; color: green; font-weight: bold;">
+  🎉 Та эхний 5-д орсон байна!
+</p>
+      <img src="rain.gif" width="300" /><br>
+      <p id="revealWord"></p>
+   
+      <button onclick="restartGame()">Дахин тоглох</button>
+      <button onclick="exitGame()">Гарах</button>
+    </div>
+  </div>
+
+  <div id="top10Modal">
+    <div class="modal-content">
+      <h3>Шилдэг 10 тоглогч</h3>
+      <ol id="scoreboardList"></ol>
+      <button onclick="closeTop10()">Хаах</button>
+    </div>
+  </div>
+
+  <script>
+    const words = [
+     { word: "намсрай", hint: "Эд хөрөнгийн бурхан" },
+      { word: "эхнэр", hint: "Увсаар гэрийн хүн гэдэг үг" },
+      { word: "морь", hint: "Халуун цустай амьтан" },
+      { word: "солонго", hint: "Үзэгдэл" },
+      { word: "утаа", hint: "Улаанбаатрын өвөл" },
+      { word: "тосдоно", hint: "Ажил хийвэл ам ..." },
+      { word: "нүд", hint: "Биеийн хэсэг" },
+      { word: "чих", hint: "Биеийн хэсэг" },
+       { word: "малгай", hint: "Хувцас" },
+      { word: "бундан", hint: "Хөзөр" },
+      { word: "хадаас", hint: "Барилгын материал" },
+      { word: "алмаз", hint: "Жижигхэн тусмаа үнэтэй" },
+      { word: "захтай", hint: "Хүн ахтай дээл" },
+      { word: "нуруу", hint: "Тулгуур эрхтэн" },
+       { word: "сар", hint: "Мөсөн дээр мөнгөн аяга" },
+      { word: "жавхлан", hint: "ИТҮ ордог багшийн нэр" },
+      { word: "нар", hint: "том од" },
+      { word: "дөрөв", hint: "тоо" },
+       { word: "доллар", hint: "Мөнгөн дэвсгэрт" },
+      { word: "хавар", hint: "улирал" },
+      { word: "шар", hint: "өнгө" }
+    ];
+
+    let currentWord = "";
+    let guessedLetters = [];
+    let score = 0;
+    let timer = null;
+    let timeLeft = 60;
+    let mistakeCount = 0;
+    const maxMistakes = 4;
+
+    function getCookie(name) {
+      const value = document.cookie.split("; ").find(row => row.startsWith(name + "="));
+      return value ? value.split("=")[1] : null;
+    }
+
+    function startGame() {
+      const nickname = document.getElementById('nickname').value.trim();
+      if (!nickname) return alert('Нэрээ оруулна уу');
+      document.cookie = `nickname=${nickname}`;
+      document.getElementById('nicknameInput').style.display = 'none';
+      document.getElementById('gameArea').style.display = 'block';
+      score = 0;
+      document.getElementById('score').innerText = `Оноо: ${score}`;
+      startTimer();
+      loadNewWord();
+    }
+
+    function startTimer() {
+      timeLeft = 60;
+      document.getElementById('timer').innerText = `Цаг: ${timeLeft}`;
+      timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById('timer').innerText = `Цаг: ${timeLeft}`;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          showGameOver();
+        }
+      }, 1000);
+    }
+
+   function loadNewWord() {
+    clearInterval(timer);  // Өмнөх цагийг зогсооно
+    clearCanvas();
+    drawGallows();
+
+    guessedLetters = [];
+    mistakeCount = 0;
+
+    const random = words[Math.floor(Math.random() * words.length)];
+    currentWord = random.word;
+    document.getElementById('hint').innerText = `Сэжүүр: ${random.hint}`;
+    renderWord();
+    renderKeyboard();
+
+    timeLeft = 60;  // Хугацааг дахин 60 секундээс эхлүүлнэ
+    document.getElementById('timer').innerText = `Цаг: ${timeLeft}`;
+    timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById('timer').innerText = `Цаг: ${timeLeft}`;
+        if (timeLeft <= 0) {
+            clearInterval(timer);  // Хугацаа дуусахад
+            showGameOver();  // Тоглогч хожигдлоо гэж үзнэп
+        }
+    }, 1000);
+}
+function handleGuess(letter) {
+    guessedLetters.push(letter);
+    renderWord();
+    renderKeyboard();
+
+    if (currentWord.includes(letter)) {
+        score++;
+        document.getElementById('score').innerText = `Оноо: ${score}`;
+        const allGuessed = currentWord.split('').every(l => guessedLetters.includes(l));
+        if (allGuessed) {
+            setTimeout(() => {
+                loadNewWord();  // 2 секунд хүлээгээд дараагийн үг
+            }, 2000);
+        }
+    } else {
+        mistakeCount++;
+        updateCanvas();  // Canvas дээр зурагдах хэсгийг зурна
+
+    
+if (mistakeCount >= maxMistakes) {
+  clearInterval(timer);
+  setTimeout(() => {
+    showGameOver();
+  }, 2000); // canvas зурагдахад жаахан хугацаа өгч байна
+}
+
+            
+    }
+}
+
+
+    function renderWord() {
+      const wordDiv = document.getElementById('word');
+      wordDiv.innerHTML = '';
+      for (const char of currentWord) {
+        const span = document.createElement('span');
+        span.className = 'letter-box';
+        span.innerText = guessedLetters.includes(char) ? char : '';
+        wordDiv.appendChild(span);
+      }
+    }
+
+    function renderKeyboard() {
+      const keyboard = document.getElementById('keyboard');
+      keyboard.innerHTML = '';
+      const layout = ['фцужэнгшүзкъе', 'йыбөахролдп', 'ячёсмитьвющ'];
+      for (const row of layout) {
+        const rowDiv = document.createElement('div');
+        rowDiv.classList.add('keyboard-row');
+        for (const letter of row) {
+          const btn = document.createElement('button');
+          btn.innerText = letter;
+          btn.disabled = guessedLetters.includes(letter);
+          btn.onclick = () => handleGuess(letter);
+          rowDiv.appendChild(btn);
+        }
+        keyboard.appendChild(rowDiv);
+      }
+    }
+
+    function handleGuess(letter) {
+      guessedLetters.push(letter);
+      renderWord();
+      renderKeyboard();
+
+      if (currentWord.includes(letter)) {
+        score++;
+        document.getElementById('score').innerText = `Оноо: ${score}`;
+        const allGuessed = currentWord.split('').every(l => guessedLetters.includes(l));
+        if (allGuessed) {
+          showSuccessGifAndNextWord();
+        }
+      } else {
+        mistakeCount++;
+        updateCanvas();
+        if (mistakeCount >= maxMistakes) {
+          clearInterval(timer);
+          showGameOver();
+
+        }
+      }
+    }
+
+    function showSuccessGifAndNextWord() {
+      const wordDiv = document.getElementById('word');
+      wordDiv.innerHTML += `<br><img src="rainbow.gif" width="300" />`;
+      setTimeout(() => {
+        loadNewWord();
+      }, 2000);
+    }
+
+    function clearCanvas() {
+      const canvas = document.getElementById('hangmanCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function drawGallows() {
+      const ctx = document.getElementById('hangmanCanvas').getContext('2d');
+      ctx.strokeStyle = 'black'; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(20, 230); ctx.lineTo(180, 230); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(60, 230); ctx.lineTo(60, 20); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(60, 20); ctx.lineTo(100, 20); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(100, 20); ctx.lineTo(100, 40); ctx.stroke();
+    }
+
+    function updateCanvas() {
+      const ctx = document.getElementById('hangmanCanvas').getContext('2d');
+      ctx.strokeStyle = 'red'; ctx.lineWidth = 2;
+      switch(mistakeCount) {
+        case 1: ctx.beginPath(); ctx.arc(100, 60, 20, 0, Math.PI * 2); ctx.stroke(); break;
+        case 2: ctx.beginPath(); ctx.moveTo(100, 80); ctx.lineTo(100, 120); ctx.stroke(); break;
+        case 3:
+          ctx.beginPath(); ctx.moveTo(100, 80); ctx.lineTo(80, 100); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(100, 80); ctx.lineTo(120, 100); ctx.stroke();
+          break;
+        case 4:
+          ctx.beginPath(); ctx.moveTo(100, 120); ctx.lineTo(80, 150); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(100, 120); ctx.lineTo(120, 150); ctx.stroke();
+
+      break;
+      
+      }
+    }
+
+   function showGameOver() {
+  document.getElementById("revealWord").innerText = `Зөв үг: ${currentWord}`;
+
+  const isTop5 = saveScoreToLocalStorage(); // Оноог хадгалаад top 5 шалгах
+
+  // Хэрвээ top 5-д орсон бол мессеж харуулах
+  const top5Msg = document.getElementById("top5Message");
+  if (isTop5) {
+    top5Msg.style.display = "block";
+  } else {
+    top5Msg.style.display = "none";
+  }
+
+  // Game over модалыг харагдуулна
+  document.getElementById("gameOverModal").style.display = "flex";
+}
+
+
+    function restartGame() {
+      document.getElementById("gameOverModal").style.display = "none";
+      score = 0;
+      document.getElementById('score').innerText = `Оноо: ${score}`;
+      startTimer();
+      loadNewWord();
+    }
+
+    function exitGame() {
+      location.reload();
+    }
+
+   function saveScoreToLocalStorage() {
+  const nickname = getCookie("nickname") || "Тоглогч";
+  let scores = JSON.parse(localStorage.getItem("hangmanTopScores")) || [];
+
+  const existing = scores.findIndex(entry => entry.name === nickname);
+  if (existing !== -1) {
+    if (score > scores[existing].score) scores[existing].score = score;
+  } else {
+    scores.push({ name: nickname, score: score });
+  }
+
+  scores.sort((a, b) => b.score - a.score);
+  scores = scores.slice(0, 10);
+  localStorage.setItem("hangmanTopScores", JSON.stringify(scores));
+
+  // ✔ Топ 5-д орсон эсэхийг шалгах
+  const top5 = scores.slice(0, 5);
+  const isTop5 = top5.some(entry => entry.name === nickname);
+  return isTop5;
+}
+
+
+    function showTop10() {
+      const list = document.getElementById("scoreboardList");
+      list.innerHTML = '';
+      const scores = JSON.parse(localStorage.getItem("hangmanTopScores")) || [];
+      scores.forEach(entry => {
+        const li = document.createElement("li");
+        li.innerText = `${entry.name}: ${entry.score} оноо`;
+        list.appendChild(li);
+      });
+      document.getElementById("top10Modal").style.display = "flex";
+    }
+
+    function closeTop10() {
+      document.getElementById("top10Modal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
