@@ -30,13 +30,13 @@
       background-color: rgba(255, 254, 254, 0.902);
     }
     #nicknameInput button {
-      padding: 10px 20px;
+      padding: 10px;
       font-size: 18px;
       background-color: #45a049;
       color: rgb(255, 255, 255);
       border: none;
       border-radius: 5px;
-      margin-left: 10px;
+      margin-top: 10px;
       cursor: pointer;
     }
     #nicknameInput button:hover {
@@ -113,7 +113,7 @@
       background: white; padding: 30px;  margin-top: -450px; border-radius: 8px; text-align: center;
     }
     #scoreboardList li { font-size: 18px; text-align: left; }
-    @media (max-width: 600px) {
+    @media (max-width: 596px) {
   body {
     background-size: cover;
     font-size: 16px;
@@ -129,27 +129,34 @@
   #nicknameInput input {
     width: 90%;
     font-size: 16px;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 10px ;
   }
 
   #nicknameInput button {
     font-size: 16px;
-    padding: 10px;
+    padding: 8px;
     width: 100%;
   }
 
-  #word, #hint, #score, #timer {
+  #hint, #score, #timer {
     font-size: 18px;
     text-align: center;
     margin-bottom: 10px;
+    margin-top: 10px;
   }
-
+ #word{
+  font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: -5px;
+ }
   .letter-box {
-    width: 32px;
-    height: 32px;
+    width: 25px;
+    height: 25px;
     font-size: 20px;
     margin: 2px;
+    line-height: 18px;
+   
   }
 
   .keyboard-row {
@@ -160,14 +167,14 @@
   }
 
   .keyboard-row button {
-    padding: 8px 10px;
+    padding: 8px 7px;
     font-size: 14px;
     margin: 2px;
   }
 
   canvas {
-    width: 100% !important;
-    height: auto !important;
+    width: 250px !important;
+    height: 300px !important;
     display: block;
     margin: 0 auto;
   }
